@@ -1,0 +1,23 @@
+- @title = "Hub - Subscription Details" + @content['topic_url']
+%h1
+  Subscription Details - #{@content['topic_url']}
+
+- if session[:error]
+  .errors
+    = session.delete(:error)
+
+%p
+%p
+%p 
+
+- if @subscriptions and @subscriptions.any?
+  %ul
+    - @subscriptions.each do |subscription|
+      %li
+        %h2 Subscription
+        %ul
+          - subscription.attributes.each do |attribute|
+            %li
+              %span #{attribute}=#{subscription.send(attribute)}
+- else
+  %p

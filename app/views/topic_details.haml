@@ -1,0 +1,7 @@
+- @title = "Hub - Topic Details" + @context['topic_url']
+%h1
+  Topic Details - #{@context['topic_url']}
+
+- if session[:error]
+  .errors
+    = session.delete(:error)

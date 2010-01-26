@@ -1,0 +1,70 @@
+%h1
+  Subscribe/Unsubscribe
+Create a new subscription.
+%form{ :method => "post", :action => "/subscribe", "accept-charset" => "utf-8" }
+  %p
+    %label{ :for => "callback" }
+      Callback:
+      %em
+        (the subscriber URL)
+    %input#callback{ :name => "hub.callback", :value => "", :type => "text" }
+  %p
+    %label{ :for => "topic" }
+      Topic:
+      %em
+        (the feed URL)
+    %input#topic{ :name => "hub.topic", :value => "", :type => "text" }
+  %p
+    %label{ :for => "verify" }
+      Verify type:
+    %select#async{ :name => "hub.verify" }
+      %option{ :selected => "selected", :value => "sync" }
+        Synchronous
+      %option{ :value => "async" }
+        Asynchronous
+  %p
+    %label{ :for => "mode" }
+      Mode:
+    %select#mode{ :name => "hub.mode" }
+      %option{ :selected => "selected", :value => "subscribe" }
+        Subscribe
+      %option{ :value => "unsubscribe" }
+        Unsubscribe
+  %p
+    %label{ :for => "verify_token" }
+      Verify token:
+    %input#verify_token{ :name => "hub.verify_token", :value => "", :type => "text" }
+  %p
+    %label{ :for => "secret" }
+      HMAC secret:
+      %em
+        (optional)
+    %input#secret{ :name => "hub.secret", :value => "", :type => "text" }
+  %p
+    %input{ :value => "Do it", :type => "submit" }
+%em
+  Note: submission will result in a HTTP 204 response to acknowledge; in browsers this looks like a no-op
+%h1
+  Subscriber Diagnostics
+Retrieve details about a subscription.
+%form{ :method => "get", :action => "/subscription-details", "accept-charset" => "utf-8" }
+  %p
+    %label{ :for => "callback" }
+      Callback:
+      %em
+        (the subscriber URL)
+    %input#callback{ :name => "hub.callback", :size => "50", :value => "", :type => "text" }
+  %p
+    %label{ :for => "topic" }
+      Topic:
+      %em
+        (the feed URL)
+    %input#topic{ :name => "hub.topic", :size => "50", :value => "", :type => "text" }
+  %p
+    %label{ :for => "secret" }
+      Secret:
+      %em
+        (optional)
+    %input#secret{ :name => "hub.secret", :size => "50", :value => "", :type => "text" }
+  %p
+    %input{ :value => "Get info", :type => "submit" }

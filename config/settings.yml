@@ -1,0 +1,18 @@
+defaults: &defaults
+  :log_level: debug
+
+:development:
+  <<: *defaults
+  :log_level: debug
+  :redis:
+    :port: 6379
+
+:test:
+  <<: *defaults
+  :redis:
+    :port: 6380
+
+:production:
+  <<: *defaults
+  :redis:
+    :port: 6379

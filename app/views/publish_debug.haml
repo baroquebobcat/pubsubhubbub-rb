@@ -1,0 +1,38 @@
+%h1
+  Publish
+%form{ :method => "post", :action => "/publish", "accept-charset" => "utf-8" }
+  %input{ :name => "hub.mode", :value => "publish", :type => "hidden" }
+  %p
+    %label{ :for => "topic" }
+      Topic:
+      %em
+        (the feed URL)
+    %input#topic{ :name => "hub.url", :size => "50", :value => "", :type => "text" }
+  %p
+    %input{ :value => "Publish", :type => "submit" }
+%em
+  Note: submission will result in a HTTP 204 response to acknowledge; in browsers this looks like a no-op
+%h1
+  Publisher Diagnostics
+Retrieve details about a topic URL.
+%form{ :method => "get", :action => "/topic-details", "accept-charset" => "utf-8" }
+  %p
+    %label{ :for => "topic" }
+      Topic:
+      %em
+        (the feed URL)
+    %input#topic{ :name => "hub.url", :size => "50", :value => "", :type => "text" }
+  %p
+    %input{ :value => "Get info", :type => "submit" }
+%em
+  Note: This hub ignores publisher notifications about feeds with no
+  subscribers.  If you are trying to test that your publisher works correctly,
+  you may want to use the
+  %a{ :href => "/subscribe" }
+    Subscription page
+  to subscribe
+  the
+  %a{ :href => "http://pubsubhubbub-subscriber.appspot.com/" }
+    example subscriber
+    app
+  to your feed.
